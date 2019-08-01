@@ -3,6 +3,7 @@ package io.github.angebagui.mediumtextview.util;
 import android.content.Context;
 import android.graphics.Typeface;
 import android.util.DisplayMetrics;
+import android.util.Log;
 import android.widget.TextView;
 
 import org.jsoup.nodes.Element;
@@ -16,6 +17,8 @@ import io.github.angebagui.mediumtextview.IFrameView;
 import io.github.angebagui.mediumtextview.ImageView;
 import io.github.angebagui.mediumtextview.ParagraphView;
 
+import static android.content.ContentValues.TAG;
+
 /**
  * Created by angebagui on 06/08/2016.
  */
@@ -23,6 +26,7 @@ import io.github.angebagui.mediumtextview.ParagraphView;
 public class Utils {
 
     public static void appendView(ElementView elementView, Elements elements){
+        Log.d(TAG, "appendView: "+elements);
         for (Element e: elements){
             if (JsoupUtils.isBlockquote(e)){
                 elementView.addView(new BlockquoteView( elementView.getContext(), e));
@@ -36,6 +40,8 @@ public class Utils {
                 elementView.addView(new ImageView( elementView.getContext(),e));
             }else if(JsoupUtils.isDiv(e)){
                 elementView.addView(new DivView(elementView.getContext(),e));
+            }else if (JsoupUtils.isUl(e)){
+                elementView.addView(new ParagraphView(elementView.getContext(),elements));
             }
             else {
 

@@ -1,5 +1,7 @@
 package io.github.angebagui.mediumtextview.util;
 
+import android.util.Log;
+
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
@@ -7,6 +9,9 @@ import org.jsoup.select.Elements;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import static android.content.ContentValues.TAG;
+
 /**
  * Created by angebagui on 06/08/2016.
  */
@@ -15,9 +20,20 @@ public class JsoupUtils {
 
 
     public static boolean isParagraph(Element element){
+        if (element.tagName().equals("p")){
+            Log.d(TAG, "isParagraph: "+element.html());
+        }
         return element.tagName().equals("p");
+
     }
 
+    public static boolean isUl(Element element){
+        if (element.tagName().equals("ul")){
+            Log.d(TAG, "isisUl: "+element);
+        }
+        return element.tagName().equals("ul");
+
+    }
     public static boolean isIFrame(Element element){
         return element.tagName().equals("iframe");
     }
@@ -35,6 +51,9 @@ public class JsoupUtils {
     }
 
     public static boolean isDiv(Element element){
+        if (element.tagName().equals("p")){
+            Log.d(TAG, "isDiv: "+element.html());
+        }
         return element.tagName().equals("div");
     }
 

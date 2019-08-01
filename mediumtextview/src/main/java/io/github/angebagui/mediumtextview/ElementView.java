@@ -5,6 +5,8 @@ import android.util.AttributeSet;
 import android.widget.LinearLayout;
 
 import org.jsoup.nodes.Element;
+import org.jsoup.nodes.Node;
+import org.jsoup.select.Elements;
 
 /**
  * Created by angebagui on 06/08/2016.
@@ -19,6 +21,9 @@ public abstract class ElementView extends LinearLayout{
         this.element = element;
         render();
     }
+
+
+
 
     protected ElementView(Context context, AttributeSet attrs, Element element) {
         super(context, attrs);

@@ -2,6 +2,7 @@ package io.github.angebagui.mediumtextview;
 
 import android.content.Context;
 import android.util.AttributeSet;
+import android.util.Log;
 
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
@@ -32,6 +33,7 @@ public class MediumTextView  extends ElementView{
         Document document =  Jsoup.parse(html);
         Element element = document.body();
         setElement(element);
+        Log.d("alex", "setText: "+getElement().children());
         Utils.appendView(this,getElement().children());
         invalidate();
     }
