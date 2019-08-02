@@ -30,7 +30,8 @@ public class Content {
 
     public static Content deserialize(Context context){
         try {
-            String jsonString = parseResource(context, R.raw.content);
+            //String jsonString = parseResource(context, R.raw.content);
+            String jsonString = parseResource(context, R.raw.contentone);
             Content content = new Gson().fromJson(jsonString,Content.class);
             return content;
         } catch (IOException e) {

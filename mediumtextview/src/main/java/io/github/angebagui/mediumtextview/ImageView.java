@@ -36,6 +36,7 @@ public class ImageView extends ElementView {
         imageView.setLayoutParams(new LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT));
         imageView.setPadding(Utils.dpToPx(getContext(),8), Utils.dpToPx(getContext(),16),Utils.dpToPx(getContext(),8),Utils.dpToPx(getContext(),16) );
         final String url = getLink();
+        Log.d(TAG, "render: link "+url);
         Picasso.with(getContext()).load(url).error(R.drawable.image_placeholder_error).into(imageView);
         imageView.setAdjustViewBounds(true);
         addView(imageView);

@@ -12,9 +12,11 @@ import org.jsoup.select.Elements;
 import io.github.angebagui.mediumtextview.BlockquoteView;
 import io.github.angebagui.mediumtextview.DivView;
 import io.github.angebagui.mediumtextview.ElementView;
+import io.github.angebagui.mediumtextview.ElementsView;
 import io.github.angebagui.mediumtextview.HeaderView;
 import io.github.angebagui.mediumtextview.IFrameView;
 import io.github.angebagui.mediumtextview.ImageView;
+import io.github.angebagui.mediumtextview.UnoLListView;
 import io.github.angebagui.mediumtextview.ParagraphView;
 
 import static android.content.ContentValues.TAG;
@@ -26,8 +28,9 @@ import static android.content.ContentValues.TAG;
 public class Utils {
 
     public static void appendView(ElementView elementView, Elements elements){
-        Log.d(TAG, "appendView: "+elements);
+
         for (Element e: elements){
+            Log.d(TAG, "appendView: "+e);
             if (JsoupUtils.isBlockquote(e)){
                 elementView.addView(new BlockquoteView( elementView.getContext(), e));
             }else if(JsoupUtils.isHeader(e)){
@@ -41,13 +44,19 @@ public class Utils {
             }else if(JsoupUtils.isDiv(e)){
                 elementView.addView(new DivView(elementView.getContext(),e));
             }else if (JsoupUtils.isUl(e)){
-                elementView.addView(new ParagraphView(elementView.getContext(),elements));
+                elementView.addView(new UnoLListView(elementView.getContext(),e));
             }
             else {
 
             }
         }
+        Log.d(TAG, "appendViewOl: "+elements.get(0).tagName());
+        if (JsoupUtils.isUl(elements.get(0))){
+           //elementView.addView(new UnoLListView(elementView.getContext(),elements));
+        }
     }
+
+
 
     public static int dpToPx(Context context , int dp) {
         DisplayMetrics displayMetrics = context.getResources().getDisplayMetrics();

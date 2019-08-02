@@ -21,7 +21,7 @@ public class JsoupUtils {
 
     public static boolean isParagraph(Element element){
         if (element.tagName().equals("p")){
-            Log.d(TAG, "isParagraph: "+element.html());
+            Log.d(TAG, "isParagraph: ");
         }
         return element.tagName().equals("p");
 
@@ -29,7 +29,7 @@ public class JsoupUtils {
 
     public static boolean isUl(Element element){
         if (element.tagName().equals("ul")){
-            Log.d(TAG, "isisUl: "+element);
+            Log.d(TAG, "isisUl: ");
         }
         return element.tagName().equals("ul");
 
